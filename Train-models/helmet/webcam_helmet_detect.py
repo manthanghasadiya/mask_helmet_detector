@@ -54,4 +54,4 @@ def helmet():
     camera.release()
     cv2.destroyAllWindows()
 
-helmet()
+helmet() 
