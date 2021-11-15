@@ -1,0 +1,5 @@
+Django==3.2.9
+imutils==0.5.4
+numpy==1.21.4
+opencv_python==4.5.4.58
+tensorflow==2.7.0
