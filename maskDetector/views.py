@@ -86,7 +86,7 @@ def helmet():
 
 def helmetDetection(request):
     helmet()
-    return httpresponse("hello world")
+    return HttpResponse("hello world")
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
@@ -226,5 +226,5 @@ def mask():
 
 
 def maskDetection(request):
-    mask()
-    return httpresponse("hello world")
+    # mask()
+    return HttpResponse("hello world")
