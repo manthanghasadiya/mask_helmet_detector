@@ -15,8 +15,8 @@ from imutils.video import VideoStream
 print("[INFO] loading helmet detector model...")
 #creating dnn network for face detection
 network = cv2.dnn.readNetFromCaffe(
-    'Train-models/helmet/deploy.prototxt.txt', 'Train-models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
-model = keras.models.load_model('Train-models/helmet/helmet.h5')
+    'Train_models/helmet/deploy.prototxt.txt', 'Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
+model = keras.models.load_model('Train_models/helmet/helmet.h5')
 #model loading for mask detection
 ap = argparse.ArgumentParser()
 ap.add_argument("-f", "--face", type=str,
@@ -31,8 +31,8 @@ args = vars(ap.parse_args())
 
 # load our serialized face detector model from disk
 print("[INFO] loading face detector model...")
-prototxtPath = "Y:\Code\mask_helmet_detector\Train-models\mask\deploy.prototxt"
-weightsPath = "Y:\Code\mask_helmet_detector\Train-models\mask\res10_300x300_ssd_iter_140000.caffemodel"
+prototxtPath = "Y:\Code\mask_helmet_detector\Train_models\mask\deploy.prototxt"
+weightsPath = "Y:\Code\mask_helmet_detector\Train_models\mask\res10_300x300_ssd_iter_140000.caffemodel"
 
 
 # load the face mask detector model from disk

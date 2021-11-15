@@ -90,8 +90,8 @@ def mask():
 
     # load our serialized face detector model from disk
 	print("[INFO] loading face detector model...")
-	prototxtPath = "Y:\Code\mask_helmet_detector\Train-models\mask\deploy.prototxt"
-	weightsPath = "Y:\Code\mask_helmet_detector\Train-models\mask\res10_300x300_ssd_iter_140000.caffemodel"
+	prototxtPath = "Y:\Code\mask_helmet_detector\Train_models\mask\deploy.prototxt"
+	weightsPath = "Y:\Code\mask_helmet_detector\Train_models\mask\res10_300x300_ssd_iter_140000.caffemodel"
 	faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
     # load the face mask detector model from disk
@@ -161,7 +161,7 @@ def mask():
 
 # # load our serialized face detector model from disk
 # print("[INFO] loading face detector model...")
-# prototxtPath = "Y:\Code\mask_helmet_detector\Train-models\mask\deploy.prototxt"
+# prototxtPath = "Y:\Code\mask_helmet_detector\Train_models\mask\deploy.prototxt"
 # weightsPath = 	"res10_300x300_ssd_iter_140000.caffemodel"
 # faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
