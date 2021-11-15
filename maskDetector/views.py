@@ -14,28 +14,36 @@ import argparse
 import imutils
 import time
 import cv2
-from ...mask_helmet_detector.Train_models.Mask.detect_mask_video import detect_and_predict_mask,mask
+import subprocess
+
+# from detect_mask_video import *
 
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'base.html')
-
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
 
+def mask(request):
+    return render(request, 'mask.html')
+
+def helmet(request):
+    return render(request, 'helmet.html')
+
 
 def helmet():
-
+    
     vid = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     # creating dnn network for face detection
     network = cv2.dnn.readNetFromCaffe(
-    'Train_models/helmet/deploy.prototxt.txt', 'Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
+        'Train_models/helmet/deploy.prototxt.txt', 'Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
     model = keras.models.load_model('Train_models/helmet/helmet.h5')
-
+    start_time = time.time()
+    seconds = 10
     while True:
         ret, frame = vid.read()
         if ret:
@@ -78,17 +86,27 @@ def helmet():
 
             cv2.imshow('hi', frame)
             cv2.waitKey(10)
-            if cv2.waitKey(1) == ord('e'):
-                break
+        current_time = time.time()
+        elapsed_time = current_time - start_time
+        if elapsed_time > seconds:
+            break
 
-    camera.release()
+    vid.release()
     cv2.destroyAllWindows()
 
 
 def helmetDetection(request):
     helmet()
-    return HttpResponse("hello world")
+    return render(request, 'home.html')
+
+
+def mask():
+    print("[INFO] loading face detector model...")
+    # subprocess.call(['cmd', '/c', 'dir'])
+    subprocess.call([r'Y:/Code/mask_helmet_detector/maskDetector/run.bat'])
+    return HttpResponse("mask detector")
+
 
 def maskDetection(request):
     mask()
-    return HttpResponse("hello world")
+   	return render(request, 'home.html')

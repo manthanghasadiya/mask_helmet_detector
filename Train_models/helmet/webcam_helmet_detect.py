@@ -47,9 +47,10 @@ def helmet():
 
             cv2.imshow('hi',frame)
             cv2.waitKey(10)
-            if cv2.waitKey(1) == ord('e'):
+            key = cv2.waitKey(1) & 0xFF
+            # if the `q` key was pressed, break from the loop
+            if key == ord("q"):
                 break
-
 
     camera.release()
     cv2.destroyAllWindows()
