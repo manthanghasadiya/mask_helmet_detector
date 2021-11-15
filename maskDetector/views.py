@@ -109,4 +109,4 @@ def mask():
 
 def maskDetection(request):
     mask()
-   	return render(request, 'home.html')
+    return render(request,'home.html')
