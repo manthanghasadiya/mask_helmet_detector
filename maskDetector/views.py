@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-# from Train-models.helmet.webcam_helmet_detect import helmet
+# from Train_models.helmet.webcam_helmet_detect import helmet
 import os
 import numpy as np
 import cv2
@@ -33,8 +33,8 @@ def helmet():
     vid = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     # creating dnn network for face detection
     network = cv2.dnn.readNetFromCaffe(
-    'Train-models/helmet/deploy.prototxt.txt', 'Train-models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
-    model = keras.models.load_model('Train-models/helmet/helmet.h5')
+    'Train_models/helmet/deploy.prototxt.txt', 'Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
+    model = keras.models.load_model('Train_models/helmet/helmet.h5')
 
     while True:
         ret, frame = vid.read()
