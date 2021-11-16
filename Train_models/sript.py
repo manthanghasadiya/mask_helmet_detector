@@ -1,3 +1,5 @@
+import os
+os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -8,17 +10,13 @@ import argparse
 import imutils
 import time
 import cv2
-import os
-os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
+
 #creating dnn network for face detection
-network = cv2.dnn.readNetFromCaffe('helmet/deploy.prototxt.txt',
-                                   'helmet/res10_300x300_ssd_iter_140000.caffemodel')
+network = cv2.dnn.readNetFromCaffe('helmet/deploy.prototxt.txt','helmet/res10_300x300_ssd_iter_140000.caffemodel')
 model = keras.models.load_model('helmet/helmet.h5')
 maskNet = load_model("mask\mask_detector.model")
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
-	# grab the dimensions of the frame and then construct a blob
-	# from it
 	(h, w) = frame.shape[:2]
 	blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0))
 	faceNet.setInput(blob)
