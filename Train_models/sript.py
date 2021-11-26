@@ -1,5 +1,5 @@
 import os
-os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
+# os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -53,8 +53,7 @@ while True:
     if ret:
         # getting height and width od the captured frame
         (h, w) = frame.shape[:2]
-        blob = cv2.dnn.blobFromImage(cv2.resize(
-            frame, (300, 300)), 1, (300, 300), (104.0, 177.0, 123.0))
+        blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0))
         network.setInput(blob)
         detections = network.forward()
         for i in range(0, detections.shape[2]):
@@ -63,27 +62,27 @@ while True:
                 box = detections[0, 0, i, 3:7]*np.array([w, h, w, h])
                 (startX, startY, endX, endY) = box.astype(int)
                 Y = startY - 10 if startY - 10 > 10 else startY + 10
-                cv2.rectangle(frame, (startX-100, startY-100),
-                              (endX+50, endY+50), (0, 0, 255), 2)
+                # cv2.rectangle(frame, (startX-100, startY-100),
+                #               (endX+50, endY+50), (0, 0, 255), 2)
                 temp = frame[startY-100:endY+100, startX-100:endX+100]
                 temp = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 temp = cv2.resize(temp, (224, 224))
                 temp = preprocess_input(temp)
                 temp = np.expand_dims(temp, axis=0)
                 pred_val = model.predict(temp)
-                print(pred_val)
+                # print(pred_val)
                 pred_val = np.ravel(pred_val).item()
                 if pred_val < 0.7:
                     text = 'NO-HELMET' + str(pred_val)
-                    cv2.rectangle(frame, (startX-100, startY-100),
-                                  (endX+50, endY+50), (0, 0, 255), 2)
-                    cv2.putText(frame, text, (startX, Y),
+                    cv2.rectangle(frame, (startX, startY-10),
+                                  (endX, endY), (0, 0, 255), 2)
+                    cv2.putText(frame, text, (endX, Y),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                 else:
                     text = 'HELMET' + str(pred_val)
-                    cv2.rectangle(frame, (startX-100, startY-100),
-                                  (endX+50, endY+50), (0, 255, 0), 2)
-                    cv2.putText(frame, text, (startX, Y),
+                    cv2.rectangle(frame, (startX, startY-10),
+                                  (endX, endY), (0, 255, 0), 2)
+                    cv2.putText(frame, text, (endX, Y),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
         (locs, preds) = detect_and_predict_mask(frame, network, maskNet)
