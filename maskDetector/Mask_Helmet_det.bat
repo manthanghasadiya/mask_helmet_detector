@@ -1,6 +1,6 @@
 dir
 echo "hello world" 
-cd Train_models/
+cd Y:\Code\mask_helmet_detector\Train_models
 @echo off
 python sript.py
 pause
