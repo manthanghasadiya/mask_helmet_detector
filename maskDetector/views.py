@@ -105,10 +105,20 @@ def helmetDetection(request):
 def mask():
     print("[INFO] loading face detector model...")
     # subprocess.call(['cmd', '/c', 'dir'])
-    subprocess.call([r'Y:/Code/mask_helmet_detector/maskDetector/run.bat'])
+    subprocess.call([r'C:\Users\Admin\Desktop\mask_helmet_detector\maskDetector\run.bat'])
     return HttpResponse("mask detector")
 
 
 def maskDetection(request):
     mask()
     return render(request,'home.html')
+
+def maskHelmet():
+    print("[INFO] loading face detector model...")
+    # subprocess.call(['cmd', '/c', 'dir'])
+    subprocess.call([r'C:\Users\Admin\Desktop\mask_helmet_detector\maskDetector\Mask_Helmet_det.bat'])
+    return HttpResponse("mask detector")
+
+def mask_helmet_det(request):
+    maskHelmet()
+    return render(request, 'home.html')
