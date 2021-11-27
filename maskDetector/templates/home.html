@@ -78,11 +78,11 @@
         /* Home section */
         
         .home {
-            width: 100%;
+            /* width: 100%;
             height: 100vh;
             background: url(../../static/home.jpg) no-repeat;
             background-position: center top;
-            background-size: cover;
+            background-size: cover; */
         }
         
         .navTrigger {
@@ -358,40 +358,78 @@
                 padding: 2%;
             }
         }
+        
+        #particles-js {
+            width: 100%;
+            height: 100vh;
+            background-image: url(static/bg.jpg);
+            background-position: center top;
+            background-size: cover;
+        }
+        
+        .skill-row {
+            width: 50%;
+            margin: 100px auto 100px auto;
+            text-align: left;
+        }
+        
+        h3 {
+            color: #008080;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
-
-    <nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <a href="{% url 'home' %}">Mask-Helmet Detector</a>
-            </div>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'maskDetection' %}">Mask Detection</a></li>
-                    <li><a href="{% url 'helmetDetection' %}">Helmet Detection</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <span class="navTrigger">
+    <div id="particles-js">
+        <nav class="nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="{% url 'home' %}">Mask-Helmet Detector</a>
+                </div>
+                <div id="mainListDiv" class="main_list">
+                    <ul class="navlinks">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'maskDetection' %}">Mask Detection</a></li>
+                        <li><a href="{% url 'helmetDetection' %}">Helmet Detection</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <span class="navTrigger">
                 <i></i>
                 <i></i>
                 <i></i>
             </span>
-        </div>
-    </nav>
+            </div>
+        </nav>
 
-    <section class="home">
-    </section>
+        <section class="home">
+        </section>
+    </div>
     <div style="height: 1000px">
         <!-- just to make scrolling effect possible -->
         <h2 class="myH2">Mask-Helmet Detection</h2>
         <p class="myP">This is a responsive fixed navbar animated on scroll</p>
 
+    </div>
+    <div class="skills">
+        <h2>My Skills.</h2>
+        <div class="skill-row">
+            <img class="code" src="static\manthan.jpg" alt="java">
+
+            <h3>Competetive Coding</h3>
+            <p class="code-skill">I started Competetive coding in my First year's summer vacations. Since then it became a part of my life.</p>
+
+        </div>
+        <div class="skill-row">
+            <img class="hack" style="height: 30px; width: 30px;" src="static\mohit.png">
+
+            <h3>Ethical Hacking</h3>
+            <p>I was interested in hacking from very beginning. Over time, I gained a wealth experience in Ethical Hacking.</p>
+
+        </div>
     </div>
 
     <!-- Jquery needed -->
@@ -399,6 +437,8 @@
     <script src="js/scripts.js"></script>
 
     <!-- Function used to shrink nav bar removing paddings and adding black background -->
+    <script type="text/javascript" src="static/js/particles.min.js"></script>
+    <script type="text/javascript" src="static/js/app.js"></script>
     <script>
         $(window).scroll(function() {
             if ($(document).scrollTop() > 50) {
