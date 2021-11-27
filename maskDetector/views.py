@@ -18,10 +18,6 @@ import subprocess
 os.add_dll_directory(
     "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 
-# from detect_mask_video import *
-
-
-# Create your views here.
 
 
 def home(request):
@@ -38,7 +34,6 @@ def helmet(request):
 
 
 def helmet():
-    
     vid = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     # creating dnn network for face detection
     network = cv2.dnn.readNetFromCaffe(
@@ -94,7 +89,7 @@ def helmet():
             break
 
     vid.release()
-    cv2.destroyAllWindows()
+    cv2.destroyAllWindows()    
 
 
 def helmetDetection(request):
@@ -105,7 +100,8 @@ def helmetDetection(request):
 def mask():
     print("[INFO] loading face detector model...")
     # subprocess.call(['cmd', '/c', 'dir'])
-    subprocess.call([r'C:\Users\Admin\Desktop\mask_helmet_detector\maskDetector\run.bat'])
+    subprocess.call(
+        [r'Y:\Code\mask_helmet_detector\maskDetector\run.bat'])
     return HttpResponse("mask detector")
 
 
@@ -116,7 +112,8 @@ def maskDetection(request):
 def maskHelmet():
     print("[INFO] loading face detector model...")
     # subprocess.call(['cmd', '/c', 'dir'])
-    subprocess.call([r'C:\Users\Admin\Desktop\mask_helmet_detector\maskDetector\Mask_Helmet_det.bat'])
+    subprocess.call(
+        [r'Y:\Code\mask_helmet_detector\maskDetector\Mask_Helmet_det.bat'])
     return HttpResponse("mask detector")
 
 def mask_helmet_det(request):

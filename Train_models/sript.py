@@ -1,5 +1,5 @@
 import os
-# os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
+os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -11,10 +11,12 @@ import imutils
 import time
 import cv2
 
-#creating dnn network for face detection
-network = cv2.dnn.readNetFromCaffe('helmet/deploy.prototxt.txt','helmet/res10_300x300_ssd_iter_140000.caffemodel')
-model = keras.models.load_model('helmet/helmet.h5')
-maskNet = load_model("mask\mask_detector.model")
+#creating dnn network for face detectionY:/Code/mask_helmet_detector/Train_models/helmet/deploy.prototxt.txt
+network = cv2.dnn.readNetFromCaffe('Y:/Code/mask_helmet_detector/Train_models/helmet//deploy.prototxt.txt','Y:/Code/mask_helmet_detector/Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
+model = keras.models.load_model(
+	'Y:/Code/mask_helmet_detector/Train_models/helmet/helmet.h5')
+maskNet = load_model(
+	"Y:/Code/mask_helmet_detector/Train_models/mask/mask_detector.model")
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	(h, w) = frame.shape[:2]
@@ -62,8 +64,6 @@ while True:
                 box = detections[0, 0, i, 3:7]*np.array([w, h, w, h])
                 (startX, startY, endX, endY) = box.astype(int)
                 Y = startY - 10 if startY - 10 > 10 else startY + 10
-                # cv2.rectangle(frame, (startX-100, startY-100),
-                #               (endX+50, endY+50), (0, 0, 255), 2)
                 temp = frame[startY-100:endY+100, startX-100:endX+100]
                 temp = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 temp = cv2.resize(temp, (224, 224))
@@ -76,24 +76,25 @@ while True:
                     text = 'NO-HELMET' + str(pred_val)
                     cv2.rectangle(frame, (startX, startY-10),
                                   (endX, endY), (0, 0, 255), 2)
-                    cv2.putText(frame, text, (endX, Y),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+                    cv2.putText(frame, text, (startX, Y),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 3)
                 else:
                     text = 'HELMET' + str(pred_val)
                     cv2.rectangle(frame, (startX, startY-10),
                                   (endX, endY), (0, 255, 0), 2)
-                    cv2.putText(frame, text, (endX, Y),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+                    cv2.putText(frame, text, (startX, Y),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 3)
 
         (locs, preds) = detect_and_predict_mask(frame, network, maskNet)
         for(box, preds) in zip(locs, preds):
             (startX, startY, endX, endY) = box
             (mask, withoutMask) = preds
+            print("mask value ",preds)
             label = "Mask" if mask > withoutMask else "No Mask"
             color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
             label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
-            cv2.putText(frame, label, (startX, startY - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
+            cv2.putText(frame, label, (startX, endY - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
         cv2.imshow('hi', frame)
         cv2.waitKey(10)
