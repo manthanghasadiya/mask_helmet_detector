@@ -1,5 +1,5 @@
 # USAGE
-# python detect_mask_image.py --image Y:/Code/mask_helmet_detector/static/shubham.png
+# python detect_mask_image.py --image C:\Users\Admin\Desktop\mask_helmet_detector\static\mohit.png
 
 # import the necessary packages
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
