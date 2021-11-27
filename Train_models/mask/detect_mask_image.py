@@ -9,6 +9,8 @@ import numpy as np
 import argparse
 import cv2
 import os
+os.add_dll_directory(
+    "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 def mask_image():
 	# construct the argument parser and parse the arguments
 	ap = argparse.ArgumentParser()

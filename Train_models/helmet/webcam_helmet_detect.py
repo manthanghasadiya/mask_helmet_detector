@@ -3,6 +3,8 @@ import numpy as np
 import cv2
 from tensorflow import keras
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+os.add_dll_directory(
+    "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 
 def helmet():
 
