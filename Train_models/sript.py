@@ -97,7 +97,6 @@ while True:
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
         cv2.imshow('hi', frame)
-        cv2.waitKey(10)
         key = cv2.waitKey(1) & 0xFF
         # if the `q` key was pressed, break from the loop
         if key == ord("q"):
