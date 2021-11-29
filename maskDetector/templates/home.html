@@ -411,40 +411,6 @@
             font-family: 'Montserrat', sans-serif;
             text-decoration: none;
         }
-
-        .btnxxx-2 a {
-            color: #ffffff;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .btnxxx-2 a:hover {
-            color: #000000;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .btnxxx-2 a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            transition: all 0.5s ease-in-out;
-            transform: scaleY(1);
-        }
-
-        .btnxxx-2 a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            transition: all 0.5s ease-in-out;
-            transform: scaleX(1);
-        }
     </style>
 </head>
 
@@ -476,69 +442,140 @@
         </section>
         <!--IMage ends here-->
 
+        <!--Out Aim starts here-->
+
+
+        <!--Out Aim ENDS here-->
+
 
 
     </div>
     <div style="height: 50px">
         <!-- just to make scrolling effect possible -->
-        <h2 class="myH2">Mask-Helmet Detector Demo</h2>
+
     </div>
-    <div class="container">
+
+    <!--our mission section-->
+    <div class="container" style="margin-top:35px;margin-bottom: 35px;">
         <div class="row">
             <div class="col-sm" style="text-align: center;">
-                <img src="../../static/mask.jpeg" alt="Mask demo"><br>
-                <p>Mask detetion</p>
-                <button type="button" class="btn btn-success btn-lg">Try demo</button>
+                <h3 style="color:black;font-size:25px">OUR AIM</h3>
+                <p style="color:black;font-size:18px;text-align:justify;padding: 2px 57px;">Look around! You will find
+                    many injuries and even deaths just because of not wearing a helmet while traveling.</p>
+                <p style="color:black;font-size:18px;text-align:justify;padding: 2px 57px;">Our main goal is to provide
+                    a combined solution of helmet detection as well as mask detection which ensures everyone is wearing
+                    a helmet and mask while traveling on two-wheeled vehicles.</p>
             </div>
             <div class="col-sm" style="text-align: center;">
-                <img src="../../static/helmet.jpeg" alt="Helmet demo"><br>
-                <p>Helmet detection</p>
-                
-                <button type="button" class="btn btn-success btn-lg" style="">Try demo</button>
-            </div>
-            <div class="col-sm" style="text-align: center;">
-                <img src="../../static/helmet.jpeg" alt="mask helmet demo">
-                <p>Mask - Helmet detection</p>
-                <br>
-                <button type="button" class="btn btn-success btn-lg">Try demo</button>
+                <img src="../../static/aim.jpg" alt="Helmet demo" style="height: 220px;width:400px;"><br>
             </div>
         </div>
+    </div>
+    <div style="height: 30px;">
 
     </div>
-       
-        
-    
-                
+
+    <!--how to take trial section-->
+    <div class="container" style="margin-top:35px;margin-bottom: 35px;">
+        <div class="row">
+            <div class="col-sm" style="text-align: center;">
+                <img src="../../static/helmet.jpeg" alt="Helmet demo" style="height: 220px;width:400px;"><br>
+            </div>
+            <div class="col-sm" style="text-align: center;">
+                <h3 style="color:black;font-size:25px">How to try Demo?</h3>
+                <p style="color:black;font-size:18px;text-align:justify;padding: 2px 57px;">Below given are the three
+                    trials of helmet detectioin, mask detection and helmet-mask combined detection.</p>
+                <p style="color:black;font-size:18px;text-align:justify;padding: 2px 57px;">
+                    Make sure to have a webcam attached to your system and your face is visible.
+                    Click on the "try demo" button below to start your webcam.
+                    The model will detect if you are wearing mask and helmet corrosponding to that demo.</p>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px;">
+
+    </div>
+
+    <div style="height: 50px; margin-top: 30px">
+        <h2 class="myH2">Mask-Helmet Detector</h2>
+        <div>
 
 
-    <!-- Jquery needed -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/scripts.js"></script>
+            <!-- take a trial section-->
+            <div class="container" style="margin-top:30px;margin-bottom: 30px;">
+                <div class="row">
+                    <div class="col-sm" style="text-align: center;">
+                        <img src="../../static/mask.jpeg" alt="Mask demo"><br>
+                        <p style="font-size:13px;">Mask detetion</p>
+                        <button type="button" class="btn btn-success btn-lg" style="padding: 2px 40px; font-size: 20px;
+                border-radius: 10px;"><a href="{% url 'maskDetection' %}"
+                                style="color:white;text-decoration: none;">Try Demo</a></button>
+                    </div>
+                    <div class="col-sm" style="text-align: center;">
+                        <img src="../../static/helmet.jpeg" alt="Helmet demo"><br>
+                        <p style="font-size:13px;">Helmet detection</p>
 
-    <!-- Function used to shrink nav bar removing paddings and adding black background -->
-    <script type="text/javascript" src="static/js/particles.min.js"></script>
-    <script type="text/javascript" src="static/js/app.js"></script>
-    <script>
-        $(window).scroll(function () {
-            if ($(document).scrollTop() > 50) {
-                $('.nav').addClass('affix');
-                console.log("OK");
-            } else {
-                $('.nav').removeClass('affix');
-            }
-        });
+                        <button type="button" class="btn btn-success btn-lg" style="padding: 2px 40px; font-size: 20px;
+                border-radius: 10px;"><a href="{% url 'helmetDetection' %}"
+                                style="color:white;text-decoration: none;">Try demo</a></button>
+                    </div>
+                    <div class="col-sm" style="text-align: center;">
+                        <img src="../../static/helmet.jpeg" alt="mask helmet demo">
+                        <p style="font-size:13px;">Mask - Helmet detection</p>
+                        <button type="button" class="btn btn-success btn-lg" style="padding: 2px 40px; font-size: 20px;
+                border-radius: 10px;"><a href="{% url 'maskhelmetDetection' %}"
+                                style="color:white;text-decoration: none;">Try Demo</a></button>
+                    </div>
+                </div>
+            </div>
 
-        $('.navTrigger').click(function () {
-            $(this).toggleClass('active');
-            console.log("Clicked menu");
-            $("#mainListDiv").toggleClass("show_list");
-            $("#mainListDiv").fadeIn();
+            <footer class="text-center text-white" style="background-color: black;">
+                <!-- Grid container -->
+                <div class="container p-1"></div>
+                <!-- Grid container -->
 
-        });
-    </script>
+                <!-- Copyright -->
+                <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: 20px;">
+                    © 2021 Made with ♡ by us
+                </div>
+                <!-- Copyright -->
+            </footer>
+
+
+
+
+
+
+            <!-- Jquery needed -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="js/scripts.js"></script>
+
+            <!-- Function used to shrink nav bar removing paddings and adding black background -->
+            <script type="text/javascript" src="static/js/particles.min.js"></script>
+            <script type="text/javascript" src="static/js/app.js"></script>
+            <script>
+                $(window).scroll(function () {
+                    if ($(document).scrollTop() > 50) {
+                        $('.nav').addClass('affix');
+                        console.log("OK");
+                    } else {
+                        $('.nav').removeClass('affix');
+                    }
+                });
+
+                $('.navTrigger').click(function () {
+                    $(this).toggleClass('active');
+                    console.log("Clicked menu");
+                    $("#mainListDiv").toggleClass("show_list");
+                    $("#mainListDiv").fadeIn();
+
+                });
+            </script>
+
+
 
 </body>
 

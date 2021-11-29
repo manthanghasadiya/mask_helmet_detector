@@ -92,14 +92,14 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 
 # load our serialized face detector model from disk
 print("[INFO] loading face detector model...")
-prototxtPath = "C:/Users/Admin/Desktop/mask_helmet_detector/Train_models/mask/deploy.prototxt"
-weightsPath = 	"C:/Users/Admin/Desktop/mask_helmet_detector/Train_models/mask/res10_300x300_ssd_iter_140000.caffemodel"
+prototxtPath = "Y:/Code/mask_helmet_detector/Train_models/mask/deploy.prototxt"
+weightsPath = "Y:/Code/mask_helmet_detector/Train_models/mask/res10_300x300_ssd_iter_140000.caffemodel"
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
 print("[INFO] loading face mask detector model...")
 maskNet = load_model(
-	"C:/Users/Admin/Desktop/mask_helmet_detector/Train_models/mask/mask_detector.model")
+	"Y:/Code/mask_helmet_detector/Train_models/mask/mask_detector.model")
 
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
@@ -143,7 +143,8 @@ while True:
 	# show the output frame
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
-
+	if key == ord("q"):
+            break
 	# current_time = time.time()
 	# elapsed_time = current_time - start_time
 	# if elapsed_time > seconds:
