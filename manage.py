@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-os.add_dll_directory(
-    "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
+
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mask_helmet_detector.settings")

@@ -18,6 +18,9 @@ from imutils import paths
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import argparse
+import cv2
+import tensorflow
 
 # initialize the initial learning rate, number of epochs to train for,
 # and batch size
@@ -25,7 +28,7 @@ INIT_LR = 1e-4
 EPOCHS = 20
 BS = 32
 
-DIRECTORY = r"..\dataset"
+DIRECTORY = r"Y:/dataset"
 CATEGORIES = ["with_mask", "without_mask"]
 
 # grab the list of images in our dataset directory, then initialize

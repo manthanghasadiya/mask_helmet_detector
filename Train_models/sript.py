@@ -1,22 +1,24 @@
 import os
-os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from imutils.video import VideoStream
 from tensorflow import keras
 import numpy as np
-import argparse
 import imutils
 import time
 import cv2
 
+
+# os.add_dll_directory(
+	# "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.5/bin")
 #creating dnn network for face detectionY:/Code/mask_helmet_detector/Train_models/helmet/deploy.prototxt.txt
-network = cv2.dnn.readNetFromCaffe('Y:/Code/mask_helmet_detector/Train_models/helmet//deploy.prototxt.txt','Y:/Code/mask_helmet_detector/Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
+network = cv2.dnn.readNetFromCaffe('./mask_helmet_detector/Train_models/helmet/deploy.prototxt.txt',
+                                   './mask_helmet_detector/Train_models/helmet/res10_300x300_ssd_iter_140000.caffemodel')
 model = keras.models.load_model(
-	'Y:/Code/mask_helmet_detector/Train_models/helmet/helmet.h5')
+	'./mask_helmet_detector/Train_models/helmet/helmet.h5')
 maskNet = load_model(
-	"Y:/Code/mask_helmet_detector/Train_models/mask/mask_detector.model")
+	"./mask_helmet_detector/Train_models/mask/mask_detector.model")
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	(h, w) = frame.shape[:2]
@@ -89,7 +91,7 @@ while True:
         for(box, preds) in zip(locs, preds):
             (startX, startY, endX, endY) = box
             (mask, withoutMask) = preds
-            print("mask value ",preds)
+            # print("mask value ",preds)
             label = "Mask" if mask > withoutMask else "No Mask"
             color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
             label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
